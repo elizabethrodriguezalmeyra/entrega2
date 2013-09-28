@@ -6,7 +6,7 @@ class Purchase
 	end
 	
 	def add p
-		products[length]= p
+		product.push(p)
 	end
 	def total
 		t= products.inject {0} {|producto, n | producto.precio + n }
