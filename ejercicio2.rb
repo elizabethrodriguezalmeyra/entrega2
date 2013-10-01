@@ -1,44 +1,35 @@
 # encoding: utf-8
 class Product
   attr_accessor :nombre, :precio, :codigo
-  def initialize (c, n, p)
-    @nombre=n
-    @precio=p
-    @codigo=c
-  end
-  def nombre
-    puts @nombre
-  end
-  def precio
-    puts @precio
-  end
-  def codigo
-    puts @codigo
+  def initialize (codigo, nombre, precio)
+    @nombre=nombre
+    @precio=precio.to_f
+    @codigo=codigo
   end
 end
 
 class Purchase 
+  attr_accessor :products, :total
   def initialize
     @products= []
-    @total=0
+    @total= 0
   end
-  def add p
-    products << p
-    @total += p.precio
+  
+  def add (p)
+    @products << p 
   end
-  def total
-    puts #{@total}
+  def sumar
+    @total= products.reduce(0){|sum , n| sum + n.precio}
   end
-  def delete p
-    products.delete(p)
-    @total -= p.precio
+  def cant
+    puts @products.length
   end
+  def delete (p)
+    @products.delete(p)
+  end
+  def apply_discount
+    yield self
+  end
+  
 end
-p1 = Product.new '01', 'Martillo', '50'
-p2 = Product.new '02', 'Clavos x 100', '10'
-p = Purchase.new
-p.add p1
-p.add p2
-
-p.total
 

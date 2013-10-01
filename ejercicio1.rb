@@ -107,9 +107,15 @@ class Boa < Reptil
   def metodomuerde
     puts 'Este animal no muerde'
   end
+  def metodonadar
+    puts 'Este animal no nada'
+  end
 end
 
 class Cobra < Reptil
+  def metodonadar
+    puts 'Este animal no nada'
+  end
   def metodocamina
     puts 'Este animal no camina'
   end
@@ -121,13 +127,4 @@ class Sapo < Anfibio
 end
 class Tiburon < Pez
 end
-p=Persona.new "juan"
-p.metodocamina
-p2=Persona.new "Agustin"
-p2.metodohabla
-s=Sapo.new "Sapo"
-s.metodosalta
-a=Aguila.new "Aguila"
-a.metodovuela
-pe=Perro.new "Perro"
-pe.metodovuela
+
